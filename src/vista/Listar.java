@@ -7,6 +7,7 @@ package vista;
 
 import controlador.Registro;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import modelo.Libro;
 
@@ -21,6 +22,7 @@ public class Listar extends javax.swing.JFrame {
      */
     public Listar() {
         initComponents();
+        llenarComboLibros();
     }
 
     /**
@@ -36,6 +38,7 @@ public class Listar extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
+        comboLibro = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Listar Libros");
@@ -85,6 +88,8 @@ public class Listar extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblDatos);
 
+        comboLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,7 +103,10 @@ public class Listar extends javax.swing.JFrame {
                         .addComponent(btnBuscar))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(comboLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -110,7 +118,9 @@ public class Listar extends javax.swing.JFrame {
                     .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(comboLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,12 +171,19 @@ public class Listar extends javax.swing.JFrame {
         txtId.setText("");
     }//GEN-LAST:event_txtIdFocusGained
 
+    private void llenarComboLibros(){
+        Registro rg = new Registro();
+        List<String> lista = rg.buscarTituloLibro();
+        
+        comboLibro.setModel(new DefaultComboBoxModel<String>(lista.toArray(new String[0])));
+    }
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JComboBox<String> comboLibro;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblDatos;
     private javax.swing.JTextField txtId;

@@ -52,6 +52,7 @@ public class Registro {
 
     public boolean eliminar(int idLibro) {
         try {
+            boolean resultado = false;
             Conexion conexion1 = new Conexion();
             Connection cnx = conexion1.obtenerConexion();
 
@@ -59,10 +60,13 @@ public class Registro {
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setInt(1, idLibro);
 
-            stmt.executeUpdate();
+            int rs = stmt.executeUpdate();
             stmt.close();
             cnx.close();
-            return true;
+            if(rs > 0){
+                resultado = true;
+            }
+            return resultado;
         } catch (SQLException e) {
             System.out.println("Error SQL al eliminar libro" + e.getMessage());
             return false;
@@ -155,6 +159,34 @@ public class Registro {
                 libro.setDisponible(rs.getBoolean("disponible"));
 
                 lista.add(libro);
+            }
+            rs.close();
+            stmt.close();
+            cnx.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al listar libros" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al listar libros" + e.getMessage());
+        }
+        return lista;
+    }
+    
+    public List<String> buscarTituloLibro() {
+        List<String> lista = new ArrayList<String>();
+
+        try {
+            Conexion conexion1 = new Conexion();
+            Connection cnx = conexion1.obtenerConexion();
+
+            String query = "SELECT titulo FROM libro";
+            PreparedStatement stmt = cnx.prepareStatement(query);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                String titulo = rs.getString("titulo");
+
+                lista.add(titulo);
             }
             rs.close();
             stmt.close();
