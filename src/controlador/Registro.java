@@ -170,6 +170,9 @@ public class Registro {
         }
         return lista;
     }
+    public void newMethod(){
+        
+    }
     
     public List<String> buscarTituloLibro() {
         List<String> lista = new ArrayList<String>();
@@ -197,5 +200,9 @@ public class Registro {
             System.out.println("Error al listar libros" + e.getMessage());
         }
         return lista;
+    }
+    
+    public void metodoDePrueba(){
+        
     }
 }
