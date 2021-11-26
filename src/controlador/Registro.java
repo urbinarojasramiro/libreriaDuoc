@@ -170,7 +170,7 @@ public class Registro {
         }
         return lista;
     }
-    public void newMethod(){
+    public void newMethod2(){
         
     }
     
