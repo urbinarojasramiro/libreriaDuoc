@@ -6,11 +6,14 @@
 package vista;
 
 import controlador.Registro;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.Libro;
 
@@ -26,6 +29,8 @@ public class Agregar extends javax.swing.JFrame {
     public Agregar() {
         initComponents();
         btnVolver.requestFocus();
+        ImageIcon img = new ImageIcon("C:\\Users\\CETECOM\\Documents\\GitHub\\libreriaDuoc\\src\\images\\icon.png");
+        setIconImage(img.getImage());
     }
 
     /**
@@ -52,6 +57,7 @@ public class Agregar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agregar Libro");
+        setIconImage(getIconImage());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 

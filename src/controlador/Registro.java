@@ -170,6 +170,9 @@ public class Registro {
         }
         return lista;
     }
+    public void newMethod(){
+        
+    }
     
     public List<String> buscarTituloLibro() {
         List<String> lista = new ArrayList<String>();
@@ -231,5 +234,7 @@ public class Registro {
             System.out.println("Error al listar libro por id" + e.getMessage());
         }
         return libro;
+    public void metodoDePrueba(){
+        
     }
 }

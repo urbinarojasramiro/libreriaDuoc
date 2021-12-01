@@ -14,8 +14,7 @@ import java.util.Date;
 public class Libro {
 
     private int idLibro;
-    private String titulo;
-    private String autor;
+    private String titulo,autor;
     private Date publicacion;
     private int precio;
     private boolean disponible;
