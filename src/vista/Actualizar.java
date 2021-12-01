@@ -342,6 +342,7 @@ public class Actualizar extends javax.swing.JFrame {
             txtMes.setText(String.valueOf(fechaLibro.getMonth()));
             txtAcno.setText(String.valueOf(fechaLibro.getYear()));
             idLibro = libro.getIdLibro();
+            chkDisponible.setSelected(libro.isDisponible());
         }else{
             JOptionPane.showMessageDialog(null, "Libro no encontrado");
         }

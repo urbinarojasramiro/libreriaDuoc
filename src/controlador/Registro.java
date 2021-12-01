@@ -234,6 +234,7 @@ public class Registro {
             System.out.println("Error al listar libro por id" + e.getMessage());
         }
         return libro;
+    }
     public void metodoDePrueba(){
         
     }
