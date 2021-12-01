@@ -32,6 +32,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItemAgregar = new javax.swing.JMenuItem();
         jMIListar = new javax.swing.JMenuItem();
         menuItemEliminar = new javax.swing.JMenuItem();
+        menuItemActualizar = new javax.swing.JMenuItem();
         jMISalir = new javax.swing.JMenuItem();
         jMenuAyuda = new javax.swing.JMenu();
 
@@ -63,6 +64,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenuLibro.add(menuItemEliminar);
+
+        menuItemActualizar.setText("Actualizar");
+        menuItemActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemActualizarActionPerformed(evt);
+            }
+        });
+        jMenuLibro.add(menuItemActualizar);
 
         jMISalir.setText("Salir");
         jMISalir.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +121,11 @@ public class Menu extends javax.swing.JFrame {
         eliminar.setVisible(true);
     }//GEN-LAST:event_menuItemEliminarActionPerformed
 
+    private void menuItemActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemActualizarActionPerformed
+        Actualizar act = new Actualizar();
+        act.setVisible(true);
+    }//GEN-LAST:event_menuItemActualizarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -154,6 +168,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemAgregar;
     private javax.swing.JMenu jMenuLibro;
+    private javax.swing.JMenuItem menuItemActualizar;
     private javax.swing.JMenuItem menuItemEliminar;
     // End of variables declaration//GEN-END:variables
 }
