@@ -198,4 +198,38 @@ public class Registro {
         }
         return lista;
     }
+    
+    public Libro buscarPorTitulo(String titulo) {
+        Libro libro = new Libro();
+
+        try {
+            Conexion conexion1 = new Conexion();
+            Connection cnx = conexion1.obtenerConexion();
+
+            String query = "SELECT idlibro, titulo, autor, publicacion, precio, disponible FROM libro WHERE UPPER(titulo)=UPPER(?)";
+            PreparedStatement stmt = cnx.prepareStatement(query);
+            stmt.setString(1, titulo);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                libro.setIdLibro(rs.getInt("idlibro"));
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(rs.getString("autor"));
+                libro.setPublicacion(rs.getDate("publicacion"));
+                libro.setPrecio(rs.getInt("precio"));
+                libro.setDisponible(rs.getBoolean("disponible"));
+
+            }
+
+            rs.close();
+            stmt.close();
+            cnx.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al listar libro por id" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al listar libro por id" + e.getMessage());
+        }
+        return libro;
+    }
 }
